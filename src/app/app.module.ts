@@ -4,12 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import {AppRoutes} from './app.routes';
 
 import { AppComponent } from './app.component';
-import { RssComponent } from './components/rss/rss.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RssComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
