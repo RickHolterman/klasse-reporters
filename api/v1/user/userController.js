@@ -19,6 +19,7 @@ module.exports.register = function(req, res) {
     var response; // JSON to send as response
     var status; // HTTP status code to return
 
+    // TODO: check individual fields and return specific error messages
     if (
         req.body.name == null || req.body.name == "" || 
         req.body.email == null || req.body.email == "" ||
@@ -39,7 +40,7 @@ module.exports.register = function(req, res) {
 
         user.save(function(err) {
 
-            // TODO: add more validation (password not good enough etc.)
+            // TODO: add more validation (password not strong enough etc.)
             if (err) {
                 if (err.code == 11000) {
                     response = { "error": "Er bestaat al een Klasse Reporter met het e-mailadres dat je hebt ingevuld!" };
@@ -61,27 +62,42 @@ module.exports.register = function(req, res) {
 
 module.exports.login = function(req, res) {
 
-    passport.authenticate('local', function(err, user, info) {
-        var token;
+    var response; // JSON to send as response
+    var status; // HTTP status code to return
 
-        // If Passport throws/catches an error
-        if (err) {
-            res.status(404).json(err);
-            return;
-        }
+    // TODO: check individual fields and return specific error messages
+    if (
+        req.body.email == null || req.body.email == "" ||
+        req.body.password == null || req.body.password == ""
+    ) {
+        status = 405;
+        response = { "error": "We missen nog wat informatie!" };
 
-        // If a user is found
-        if (user) {
-            token = user.generateJwt();
-            res.status(200);
-            res.json({
-                "token" : token
-            });
-        } else {
-            // If user is not found
-            res.status(401).json(info);
-        }
-    })(req, res);
+        res.status(status);
+        res.json(response);
+    } else {
+        passport.authenticate('local', function(err, user, info) {
+            var token;
+
+            // If Passport throws/catches an error
+            if (err) {
+                status = 404;
+                response = err;
+            }
+            // If a user is found
+            if (user) {
+                token = user.generateJwt();
+                status = 200;
+                response = { "token": token };
+            } else {
+                // If user is not found
+                status = 401;
+                response = info;
+            }
+            res.status(status);
+            res.json(response);
+        })(req, res);
+    }
 };
 
 module.exports.profileRead = function(req, res) {
