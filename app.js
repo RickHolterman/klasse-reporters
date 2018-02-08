@@ -5,9 +5,13 @@ var http = require('http').Server(app);
 var feedparser = require('feedparser-promised');
 var util = require('util');
 var path = require('path');
+var bodyParser = require('body-parser');
+var passport = require('passport');
 var apiRouter = require("./api/routes");
 
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(passport.initialize());
 
 // Let our api router take care of all routes with api/v1 prefix
 app.use('/api/v1', apiRouter);
