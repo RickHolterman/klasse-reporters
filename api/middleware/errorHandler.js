@@ -1,4 +1,4 @@
-// Return http error status code as json
+// Return http error status code as JSON
 module.exports = function(err, req, res, next) {
 	if (req.app.get('env') !== 'development') {
 		delete err.stack;
