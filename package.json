@@ -25,6 +25,7 @@
     "core-js": "^2.4.1",
     "express": "^4.15.2",
     "feedparser-promised": "^1.5.0",
+    "jsonwebtoken": "^8.1.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
