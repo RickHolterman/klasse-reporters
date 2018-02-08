@@ -1,9 +1,9 @@
-<!-- <button (click)=showOrHideNav()>
-  <div></div>
-  <div></div>
-  <div></div>
-</button> -->
-<a routerLink="/">
-  <img class="logo" src="../../assets/img/logo-text.png" alt="Klasse Reporters" />
+<a routerLink="/" (click)=hideNav()>
+	<img class="logo" src="../../assets/img/logo-text.png" alt="Klasse Reporters" />
 </a>
-<!-- <nav (click)=hideNav() class="app-nav" class={{visibility}}></nav> -->
+<button (click)=showOrHideNav()>
+  <div></div>
+  <div></div>
+  <div></div>
+</button>
+<nav class="app-nav" class={{visibility}} (click)=hideNav()></nav>

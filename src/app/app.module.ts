@@ -5,11 +5,13 @@ import {AppRoutes} from './app.routes';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
