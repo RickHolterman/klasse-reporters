@@ -1,0 +1,9 @@
+<form (submit)="login()">
+	<div class="row">
+		<input type="email" class="form-control" name="email" placeholder="E-mailadres" [(ngModel)]="credentials.email">
+	</div>
+	<div class="row">
+		<input type="password" class="form-control" name="password" placeholder="Wachtwoord" [(ngModel)]="credentials.password">
+	</div>
+	<button type="submit" class="btn btn-default">Inloggen</button>
+</form>

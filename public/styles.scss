@@ -4,15 +4,52 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	outline: none;
-}
-body {
 	font-family: $primary-font, sans-serif;
 	font-size: 16px;
 }
+body {
+	outline: none;
+}
+form {
+	padding: 15px;
+	div.row {
+		display: block;
+		margin-bottom: 15px;
+		input {
+			display: inline-block;
+			width: 50%;
+			font-size: 16px;
+		}
+		input {
+			padding: 5px 0;
+			border: 0;
+			border-bottom: 2px solid #a1a1a3;
+			transition: border-color .5s;
+		}
+		input:hover, input:focus {
+			border-bottom: 2px solid $light-orange;
+		}
+		input::placeholder {
+			color: #aca1b3;
+			opacity: 1;
+		}
+	}
+}
 button {
 	cursor: pointer;
+	background-color: $purple;
+	color: white;
+	padding: 10px;
+	font-weight: bold;
+	border: none;
+	border-radius: 2px;
+	margin-top: 10px;
+	transition: opacity .5s;
+}
+button:hover {
+	opacity: .8;
 }
 a {
 	text-decoration: none;
+	cursor: pointer;
 }
