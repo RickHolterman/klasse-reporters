@@ -45,8 +45,29 @@ export class LoginComponent implements OnInit {
 			this.auth.login(this.credentials).subscribe(() => {
 				this.router.navigateByUrl('/profile');
 			}, (err) => {
+				console.log(err);
 				this.loginErrorMessage = err.error.message;
 			});
 		}
+	}
+
+	isValid(field: string, error?: string): boolean {
+		if (error) {
+			if (error == 'required') {
+				return this.form.controls[field].hasError(error) && this.submitted == true;
+			} else if (error == 'email') {
+				return this.form.controls[field].hasError(error) && this.submitted == true && !this.form.controls['email'].hasError('required');
+			}
+		} else {
+			return !this.form.controls[field].valid && this.submitted == true;
+		}
+	}
+
+	addErrorClassFor(field: string) {
+		return { 'has-error': this.isValid(field) };
+	}
+
+	addErrorMessageClassFor(field: string, error: string) {
+		return { 'error-message-show': this.isValid(field, error) };
 	}
 }

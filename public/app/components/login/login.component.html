@@ -6,13 +6,13 @@
 			type="email" 
 			placeholder="Je e-mailadres" 
 			[formControl]="form.controls['email']" 
-			[ngClass]="{'has-error':!form.controls['email'].valid && (submitted)==true}" />
-		<div class="error-message" [ngClass]="{'error-message-show':form.controls['email'].hasError('required') && (submitted)==true}">
+			[ngClass]="addErrorClassFor('email')" />
+		<div class="error-message" [ngClass]="addErrorMessageClassFor('email', 'required')">
 			<div class="error-message-text">
     			Vul je e-mailadres in!
     		</div>
     	</div>
-    	<div class="error-message" [ngClass]="{'error-message-show':form.controls['email'].hasError('email') && (submitted)==true && !form.controls['email'].hasError('required')}">
+    	<div class="error-message" [ngClass]="addErrorMessageClassFor('email', 'email')">
 			<div class="error-message-text">
     			Het lijkt erop dat dit e-mailadres niet klopt!
     		</div>
@@ -25,8 +25,8 @@
 			type="password" 
 			placeholder="En je wachtwoord" 
 			[formControl]="form.controls['password']" 
-			[ngClass]="{'has-error':!form.controls['password'].valid && (submitted)==true}" />
-		<div class="error-message" [ngClass]="{'error-message-show':form.controls['password'].hasError('required') && (submitted)==true}">
+			[ngClass]="addErrorClassFor('password')" />
+		<div class="error-message" [ngClass]="addErrorMessageClassFor('password', 'required')">
 			<div class="error-message-text">
 				Vul je wachtwoord in!
 			</div>
