@@ -6,22 +6,49 @@
 	box-sizing: border-box;
 	font-family: $primary-font, sans-serif;
 	font-size: 16px;
+	outline: none;
 }
 body {
 	outline: none;
+	overflow-x: hidden;
 }
 form {
 	padding: 15px;
+	.error-message {
+		background-color: $error;
+		max-height: 0;
+		padding: 0;
+		padding-left: 10px;
+		transition: 
+			max-height .5s ease,
+			padding .5s ease;
+		.error-message-text {
+			visibility: hidden;
+			opacity: 0;
+			transition: opacity .5s ease;
+		}
+	}
+	.error-message-show {
+		max-height: 100px;
+		padding: 10px;
+		.error-message-text {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
 	div.row {
 		display: block;
-		margin-bottom: 15px;
-		input {
+		margin-bottom: 20px;
+		label {
+			font-weight: bold;
+		}
+		input, label {
 			display: inline-block;
-			width: 50%;
+			width: 100%;
 			font-size: 16px;
 		}
 		input {
-			padding: 5px 0;
+			padding: 10px;
 			border: 0;
 			border-bottom: 2px solid #a1a1a3;
 			transition: border-color .5s;
@@ -34,12 +61,16 @@ form {
 			opacity: 1;
 		}
 	}
+	button {
+		width: 100%;
+		text-align: center;
+	}
 }
 button {
 	cursor: pointer;
 	background-color: $purple;
 	color: white;
-	padding: 10px;
+	padding: 15px;
 	font-weight: bold;
 	border: none;
 	border-radius: 2px;

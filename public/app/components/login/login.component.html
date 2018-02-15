@@ -1,9 +1,46 @@
-<form (submit)="login()">
+<form [formGroup]="form" (ngSubmit)="login(form.value)">
 	<div class="row">
-		<input type="email" class="form-control" name="email" placeholder="E-mailadres" [(ngModel)]="credentials.email">
+    	<label for="email" class="">E-mailadres</label>
+		<input
+			id="email"
+			type="email" 
+			placeholder="Je e-mailadres" 
+			[formControl]="form.controls['email']" 
+			[ngClass]="{'has-error':!form.controls['email'].valid && (submitted)==true}" />
+		<div class="error-message" [ngClass]="{'error-message-show':form.controls['email'].hasError('required') && (submitted)==true}">
+			<div class="error-message-text">
+    			Vul je e-mailadres in!
+    		</div>
+    	</div>
+    	<div class="error-message" [ngClass]="{'error-message-show':form.controls['email'].hasError('email') && (submitted)==true && !form.controls['email'].hasError('required')}">
+			<div class="error-message-text">
+    			Het lijkt erop dat dit e-mailadres niet klopt!
+    		</div>
+    	</div>
 	</div>
 	<div class="row">
-		<input type="password" class="form-control" name="password" placeholder="Wachtwoord" [(ngModel)]="credentials.password">
+		<label for="password">Wachtwoord</label>
+		<input
+			id="password"
+			type="password" 
+			placeholder="En je wachtwoord" 
+			[formControl]="form.controls['password']" 
+			[ngClass]="{'has-error':!form.controls['password'].valid && (submitted)==true}" />
+		<div class="error-message" [ngClass]="{'error-message-show':form.controls['password'].hasError('required') && (submitted)==true}">
+			<div class="error-message-text">
+				Vul je wachtwoord in!
+			</div>
+		</div>
+		<!-- <div class="error-message" [ngClass]="{'error-message-show':form.controls['password'].hasError('minlength') && form.controls['password'].touched}">
+			<div class="error-message-text">
+				Het wachtwoord moet minstens 8 karakters lang zijn.
+			</div>
+		</div> -->
 	</div>
-	<button type="submit" class="btn btn-default">Inloggen</button>
+	<div class="error-message" [ngClass]="{'error-message-show':(loginErrorMessage!=null)}">
+		<div class="error-message-text">
+			{{loginErrorMessage}}
+		</div>
+	</div>
+	<button type="submit">Inloggen</button>
 </form>
