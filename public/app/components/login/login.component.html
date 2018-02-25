@@ -7,14 +7,9 @@
 			placeholder="Je e-mailadres" 
 			[formControl]="form.controls['email']" 
 			[ngClass]="addErrorClassFor('email')" />
-		<div class="error-message" [ngClass]="addErrorMessageClassFor('email', 'required')">
+		<div class="error-message" [ngClass]="addErrorMessageClassFor('email')">
 			<div class="error-message-text">
-    			Vul je e-mailadres in!
-    		</div>
-    	</div>
-    	<div class="error-message" [ngClass]="addErrorMessageClassFor('email', 'email')">
-			<div class="error-message-text">
-    			Het lijkt erop dat dit e-mailadres niet klopt!
+    			{{errorMessageEmail}}
     		</div>
     	</div>
 	</div>
@@ -26,20 +21,10 @@
 			placeholder="En je wachtwoord" 
 			[formControl]="form.controls['password']" 
 			[ngClass]="addErrorClassFor('password')" />
-		<div class="error-message" [ngClass]="addErrorMessageClassFor('password', 'required')">
+		<div class="error-message" [ngClass]="addErrorMessageClassFor('password')">
 			<div class="error-message-text">
-				Vul je wachtwoord in!
+				{{errorMessagePassword}}
 			</div>
-		</div>
-		<!-- <div class="error-message" [ngClass]="{'error-message-show':form.controls['password'].hasError('minlength') && form.controls['password'].touched}">
-			<div class="error-message-text">
-				Het wachtwoord moet minstens 8 karakters lang zijn.
-			</div>
-		</div> -->
-	</div>
-	<div class="error-message" [ngClass]="{'error-message-show':(loginErrorMessage!=null)}">
-		<div class="error-message-text">
-			{{loginErrorMessage}}
 		</div>
 	</div>
 	<button type="submit">Inloggen</button>

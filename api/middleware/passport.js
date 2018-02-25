@@ -14,13 +14,15 @@ passport.use(new LocalStrategy({
 			// If user is not found in database
 			if (!user) {
 				return done(null, false, {
-					message: 'E-mailadres niet gevonden!'
+					message: 'E-mailadres niet gevonden!',
+					errorField: 'email'
 				});
 			}
 			// If password is wrong
 			if (!user.validPassword(password)) {
 				return done(null, false, {
-					message: 'Wachtwoord is onjuist!'
+					message: 'Wachtwoord is onjuist!',
+					errorField: 'password'
 				});
 			}
 			// If credentials are correct, return the user object
