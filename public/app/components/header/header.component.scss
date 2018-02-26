@@ -1,0 +1,33 @@
+@import '~variables.scss';
+
+:host {
+	div.visibleHeader {
+		position: relative;
+		height: 100px;
+		background-color: #fff;
+		z-index: 2;
+		a {
+			display: inline-block;
+			height: 100px;
+			img {
+				height: 70px;
+				margin: 15px;
+			}
+		}
+		button {
+			position: absolute;
+			height: 70px;
+			background: none;
+			border: none;
+			margin: 15px;
+			padding: 0 15px;
+			right: 0;
+			div {
+				width: 40px;
+				height: 5px;
+				margin: 6px 0;
+				background-color: $gray;
+			}
+		}
+	}
+}

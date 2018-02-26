@@ -3,19 +3,20 @@ var app = express();
 var engines = require('consolidate');
 var http = require('http').Server(app);
 var feedparser = require('feedparser-promised');
-var util = require('util'); // to log objects completely
-const path = require('path');
- 
-var url = 'http://feeds.nos.nl/jeugdjournaal';
-var items;
- 
-feedparser.parse(url).then( (items) => {
-  items.forEach(item => console.log(util.inspect(item, false, null)));
-}).catch(error => console.error('error: ', error));
+var util = require('util');
+var path = require('path');
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var apiRouter = require("./api/routes");
 
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use(passport.initialize());
 
-// Routes
+// Let our api router take care of all routes with api/v1 prefix
+app.use('/api/v1', apiRouter);
+
+// Make sure angular takes care of all other routes
 app.get('*', function(req, res){
   	res.sendFile(path.join(__dirname, 'dist/index.html'));
 });

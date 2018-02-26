@@ -1,0 +1,6 @@
+<ul>
+	<li><a routerLink="/">Start</a></li>
+	<li *ngIf="!auth.isLoggedIn()"><a routerLink="/login">Inloggen</a></li>
+	<li *ngIf="auth.isLoggedIn()"><a routerLink="/profile">Account</a></li>
+	<li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Uitloggen</a></li>
+</ul>
