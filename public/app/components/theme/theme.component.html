@@ -4,27 +4,38 @@
 		<p>{{theme.content}}</p>
 		<button>Let's Go! ></button>
 	</div>
-</div>
-<div class="block statement">
+</div><div class="block statement">
 	<h1>Stelling:</h1>
 	<p>{{theme.statement}}</p>
-	<button class="button1">Moeilijk</button>
-	<button class="button2">Makkelijk</button>
-</div>
-<div class="block explanation">
-	{{theme.explanation.videoUrl}}
-	<h1>{{theme.explanation.header}}</h1>
-	<p>{{theme.explanation.content}}</p>
-</div>
-<div class="block exercise">
-	{{theme.exercise.videoUrl}}
-	<h1>{{theme.exercise.header}}</h1>
-	<p>{{theme.exercise.content}}</p>
-</div>
-<div class="block my-class">
-	<h1>Mijn Klas</h1>
-	<p>
-		Lever hier je eigen video's en artikelen in 
-		en bekijk wat je klasgenoten hebben gemaakt.
-	</p>
+	<button class="button1">Moeilijk</button><button class="button2">Makkelijk</button>
+</div><div class="block explanation">
+	<div class="video-wrapper">
+		<iframe
+			src="https://www.youtube.com/embed/QDvWWkYyTPU?rel=0&amp;showinfo=0" 
+			frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+		></iframe>
+	</div>
+	<div class="explanation-text">
+		<h1>{{theme.explanation.header}}</h1>
+		<p>{{theme.explanation.content}}</p>
+	</div>
+</div><div class="block exercise">
+	<div class="video-wrapper">
+		<iframe
+			src="https://www.youtube.com/embed/fN35yZl9tRU?rel=0&amp;showinfo=0" 
+			frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+		></iframe>
+	</div>
+	<div class="explanation-text">
+		<h1>{{theme.exercise.header}}</h1>
+		<p>{{theme.exercise.content}} <a href="#">Meer uitleg...</a></p>
+	</div>
+</div><div class="block my-class">
+	<div class="my-class-text">
+		<h1>Mijn Klas</h1>
+		<p>
+			Lever hier je eigen video's en artikelen in 
+			en bekijk wat je klasgenoten hebben gemaakt.
+		</p>
+	</div>
 </div>

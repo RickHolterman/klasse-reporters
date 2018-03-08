@@ -4,7 +4,6 @@
 	display: block;
 	div.block {
 		position: relative;
-		background-color: #CCC;
 		display: inline-block;
 		padding: 15px;
 		width: 100%;
@@ -34,6 +33,7 @@
 				align-self: flex-end;
 				background-color: white;
 				color: $orange;
+				width: calc(50% - 7.5px);
 			}
 			button:hover {
 				background-color: $orange;
@@ -48,11 +48,12 @@
 		background-color: $purple;
 		button {
 			background-color: darken($purple, 10%);
+			width: calc(50% - 10px);
 			color: white;
 		}
 		button:hover {
 			background-color: white;
-			color: purple;
+			color: $purple;
 		}
 		button.button1 {
 			margin-right: 15px;
@@ -61,19 +62,59 @@
 			margin-bottom: 15px;
 		}
 	}
+	div.explanation, div.exercise {
+		padding: 0;
+		div.video-wrapper {
+			position: relative;
+			padding-bottom: calc(56.2% + 100px);
+			height: 0;
+			vertical-align: top;
+			iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		div.explanation-text {
+			padding: 15px;
+			background-color: $light-orange;
+			a {
+				color: white;
+				font-weight: bold;
+			}
+		}
+	}
 	div.my-class {
 		margin-bottom: 0;
+		background-color: $light-gray;
+		padding: 0;
+		div.my-class-text {
+			background-color: $light-orange;
+			padding: 15px;
+		}
 	}
 }
 
-@media screen and (min-width: 420px) { }
+@media screen and (min-width: 420px) { 
+	:host {
+		div.explanation {
+			iframe {
+
+				//height: calc(((100vh - 100px - 2 * 15px) / 2) - 100px);
+			}
+		}
+	}
+}
 
 @media screen and (min-width: 1025px) {
 
 	:host {
 		margin: 0 15px 15px 15px;
 		div.block {
-			height: calc((100vh - 100px - 2 * 15px) / 2);
+			box-shadow: 0px -1px 15px -1px rgba(0,0,0,0.37);
+			height: calc((100vh - 100px - 3 * 15px) / 2);
 			vertical-align: top;
 			overflow: hidden;
 			margin: initial;
@@ -83,16 +124,51 @@
 			margin-bottom: 15px;
 			width: calc((100% - 15px) * 3/4);
 			div.theme-text {
-				padding-right: 50%;
+				p {
+					padding-right: 50%;
+				}
+				button {
+					width: initial;
+					padding-left: 30px;
+					padding-right: 30px;
+					position: absolute;
+					bottom: 15px;
+				}
 			}
 		}
 		div.statement {
 			margin-bottom: 15px;
 			width: calc((100% - 15px) * 1/4);
+			button.button1 {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				margin: 0 0 15px 15px;
+				width: calc(50% - 22.5px);
+			}
+			button.button2 {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				margin: 0 15px 15px 0;
+				width: calc(50% - 22.5px);
+			}
 		}
-		div.explanation {
-			margin-right: 15px;
+		div.explanation, div.exercise {
 			width: calc((100% - 2 * 15px) * 1/3);
+			margin-right: 15px;
+			padding: 0;
+			overflow-y: auto;
+			div.video-wrapper {
+				height: 0;
+				padding-bottom: calc((100vh - 100px - 3 * 15px) * 7/20);
+				iframe {
+					height: 100%;
+				}
+			}
+			div.explanation-text {
+				min-height: calc((100vh - 100px - 3 * 15px) * 3/20);
+			}
 		}
 		div.exercise {
 			margin-right: 15px;

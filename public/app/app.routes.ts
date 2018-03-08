@@ -7,6 +7,10 @@ import { ThemeComponent } from './components/theme/theme.component';
 
 export const AppRoutes: Routes = [
 	{
+		path: '',
+		component: ThemeComponent
+	},
+	{
 		path: 'register',
 		component: RegisterComponent
 	},
@@ -25,6 +29,6 @@ export const AppRoutes: Routes = [
 	// Catch all other routes and redirect to home
 	{
 		path: '**',
-		redirectTo: '',
+		redirectTo: '/',
 	}
 ];

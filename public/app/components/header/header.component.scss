@@ -39,6 +39,7 @@
 	:host {
 		div.visibleHeader {
 			height: 100px;
+			
 			a {
 				height: 100px;
 				img {
@@ -51,6 +52,10 @@
 				margin: 15px;
 				padding: 0 15px;
 			}
+		}
+		div.gradient {
+			height: 15px;
+			background: linear-gradient(to top, rgba(243,233,249,0) 0%, rgba(255,255,255,0) 0%, rgba(221,229,233,0) 0%, rgba(243,233,249,1) 100%);
 		}
 	}
 }

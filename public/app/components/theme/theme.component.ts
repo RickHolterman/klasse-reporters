@@ -13,7 +13,7 @@ export class ThemeComponent implements OnInit {
 		statement: "Nepnieuws maken is...",
 		explanation: 
 		{
-			videoUrl: "",
+			videoUrl: "src='https://www.youtube.com/embed/QDvWWkYyTPU?rel=0&amp;showinfo=0'",
 			header: "Enzo Knol over fake news",
 			content: "Enzo Knol legt ons uit hoe nepnieuws herkend kan worden en waarom het zo belangrijk is om dit te kunnen herkennen!"
 		},
