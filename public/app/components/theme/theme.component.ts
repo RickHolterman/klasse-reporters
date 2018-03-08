@@ -10,7 +10,7 @@ export class ThemeComponent implements OnInit {
 	theme = {
 		header: "Thema van de week: Fake News",
 		content: "Fake news is tegenwoordig een bekend fenomeen. Steeds vaker zie je artikelen opduiken die volstaan met onzin. Hoe herken je zulke artikelen? Deze week komen we erachter!",
-		statement: "Stelling: Nepnieuws maken is...",
+		statement: "Nepnieuws maken is...",
 		explanation: 
 		{
 			videoUrl: "",

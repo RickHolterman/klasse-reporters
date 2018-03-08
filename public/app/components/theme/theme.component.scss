@@ -1,11 +1,65 @@
+@import '~variables.scss';
+
 :host {
 	display: block;
 	div.block {
+		position: relative;
 		background-color: #CCC;
 		display: inline-block;
 		padding: 15px;
 		width: 100%;
 		margin-bottom: 5px;
+		color: white;
+		button {
+			margin-top: auto;
+			width: calc(50% - 7.5px);
+		}
+	}
+	div.theme {
+		background-color: green;
+		width: 100%;
+		padding: 0;
+		background-size: cover;
+		background-position: center center;
+		div.theme-text {
+			display: flex;
+    		flex-direction: column;
+			width: 100%;
+			min-height: 200px;
+			height: 100%;
+			padding: 15px;
+			background-color: rgba(0, 0, 0, 0.7);
+			margin: 0;
+			button {
+				align-self: flex-end;
+				background-color: white;
+				color: $orange;
+			}
+			button:hover {
+				background-color: $orange;
+				color: white;
+			}
+			p {
+				margin-bottom: 15px;
+			}
+		}
+	}
+	div.statement {
+		background-color: $purple;
+		button {
+			background-color: darken($purple, 10%);
+			color: white;
+		}
+		button:hover {
+			background-color: white;
+			color: purple;
+		}
+		button.button1 {
+			margin-right: 15px;
+		}
+		p {
+			margin-bottom: 15px;
+		}
 	}
 	div.my-class {
 		margin-bottom: 0;
@@ -28,6 +82,9 @@
 			margin-right: 15px;
 			margin-bottom: 15px;
 			width: calc((100% - 15px) * 3/4);
+			div.theme-text {
+				padding-right: 50%;
+			}
 		}
 		div.statement {
 			margin-bottom: 15px;
