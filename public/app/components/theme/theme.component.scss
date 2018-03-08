@@ -11,7 +11,6 @@
 		color: white;
 		button {
 			margin-top: auto;
-			width: calc(50% - 7.5px);
 		}
 	}
 	div.theme {
@@ -33,7 +32,7 @@
 				align-self: flex-end;
 				background-color: white;
 				color: $orange;
-				width: calc(50% - 7.5px);
+				width: 100%;
 			}
 			button:hover {
 				background-color: $orange;
@@ -47,13 +46,13 @@
 	div.statement {
 		background-color: $purple;
 		button {
-			background-color: darken($purple, 10%);
 			width: calc(50% - 10px);
-			color: white;
-		}
-		button:hover {
 			background-color: white;
 			color: $purple;
+		}
+		button:hover {
+			color: white;
+			background-color: darken($purple, 10%);
 		}
 		button.button1 {
 			margin-right: 15px;
@@ -77,9 +76,9 @@
 				height: 100%;
 			}
 		}
-		div.explanation-text {
-			padding: 15px;
+		div.explanation-text, div.exercise-text {
 			background-color: $light-orange;
+			padding: 15px;
 			a {
 				color: white;
 				font-weight: bold;
@@ -94,15 +93,32 @@
 			background-color: $light-orange;
 			padding: 15px;
 		}
+		div.buttons {
+			padding: 15px;
+			button {
+				background-color: white;
+				color: $light-orange;
+				box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+				width: calc(50% - 7.5px);
+			}
+			button:hover {
+				background-color: $light-orange;
+				color: white;
+			}
+			button.button1 {
+				margin-right: 15px;
+			}
+		}
 	}
 }
 
 @media screen and (min-width: 420px) { 
 	:host {
-		div.explanation {
-			iframe {
-
-				//height: calc(((100vh - 100px - 2 * 15px) / 2) - 100px);
+		div.theme {
+			div.theme-text {
+				button {
+					width: calc(50% - 7.5px);
+				}
 			}
 		}
 	}
@@ -113,7 +129,6 @@
 	:host {
 		margin: 0 15px 15px 15px;
 		div.block {
-			box-shadow: 0px -1px 15px -1px rgba(0,0,0,0.37);
 			height: calc((100vh - 100px - 3 * 15px) / 2);
 			vertical-align: top;
 			overflow: hidden;
@@ -166,7 +181,7 @@
 					height: 100%;
 				}
 			}
-			div.explanation-text {
+			div.explanation-text, div.exercise-text {
 				min-height: calc((100vh - 100px - 3 * 15px) * 3/20);
 			}
 		}
@@ -176,6 +191,12 @@
 		}
 		div.my-class {
 			width: calc((100% - 2 * 15px) * 1/3);
+			position: relative;
+			div.buttons {
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+			}
 		}
 	}
 }

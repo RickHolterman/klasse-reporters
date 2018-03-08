@@ -12,7 +12,7 @@
 			height: 70px;
 			img {
 				height: 49px;
-				margin: 10.5px;
+				margin: 10.5px 15px;
 				transition: height .5s;
 			}
 		}
@@ -21,8 +21,8 @@
 			height: 49px;
 			background: none;
 			border: none;
-			margin: 10.5px;
-			padding: 0 15px;
+			margin: 15px;
+			padding: 0;
 			right: 0;
 			transition: height .5s;
 			div {

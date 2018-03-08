@@ -72,7 +72,6 @@ form {
 }
 button {
 	cursor: pointer;
-	background-color: $purple;
 	color: white;
 	padding: 10px 0;
 	font-weight: bold;
@@ -81,9 +80,6 @@ button {
 	height: 43px;
 	margin-top: 10px;
 	transition: background-color .5s, color .5s;
-}
-button:hover {
-	background-color: lighten($purple, 10%);
 }
 a {
 	text-decoration: none;

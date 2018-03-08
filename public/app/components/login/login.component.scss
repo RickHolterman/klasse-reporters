@@ -1,5 +1,15 @@
+@import '~variables.scss';
+
 form {
 	position: relative;
+}
+
+button {
+	background-color: $purple;
+}
+
+button:hover {
+	background-color: lighten($purple, 10%);
 }
 
 .has-error {
