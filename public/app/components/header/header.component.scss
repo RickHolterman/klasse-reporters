@@ -3,30 +3,53 @@
 :host {
 	div.visibleHeader {
 		position: relative;
-		height: 100px;
+		height: 70px;
 		background-color: #fff;
 		z-index: 2;
+		transition: height .5s;
 		a {
 			display: inline-block;
-			height: 100px;
+			height: 70px;
 			img {
-				height: 70px;
-				margin: 15px;
+				height: 49px;
+				margin: 10.5px;
+				transition: height .5s;
 			}
 		}
 		button {
 			position: absolute;
-			height: 70px;
+			height: 49px;
 			background: none;
 			border: none;
-			margin: 15px;
+			margin: 10.5px;
 			padding: 0 15px;
 			right: 0;
+			transition: height .5s;
 			div {
 				width: 40px;
 				height: 5px;
 				margin: 6px 0;
 				background-color: $gray;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1025px) {
+	:host {
+		div.visibleHeader {
+			height: 100px;
+			a {
+				height: 100px;
+				img {
+					height: 70px;
+					margin: 15px;
+				}
+			}
+			button {
+				height: 70px;
+				margin: 15px;
+				padding: 0 15px;
 			}
 		}
 	}
