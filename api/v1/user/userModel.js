@@ -15,7 +15,21 @@ var UserSchema = new Schema({
 		required: true
 	},
 	hash: String,
-	salt: String
+	salt: String,
+	classes: [{ // The classes a teacher owns
+		title: String,
+		current_theme: { 
+			type: mongoose.Schema.Types.ObjectId, 
+			ref: 'Theme' 
+		},
+		students: [{
+			student: { 
+				type: mongoose.Schema.Types.ObjectId, 
+				ref: 'User'
+			},
+			active: Boolean
+		}]
+	}]
 });
 
 // Add a salt to the password and hash it afterwards
