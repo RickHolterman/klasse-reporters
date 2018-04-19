@@ -12,6 +12,9 @@ body {
 	outline: none;
 	overflow-x: hidden;
 }
+h1 {
+	font-size: 1.5em;
+}
 form {
 	padding: 15px;
 	.error-message {
@@ -69,17 +72,14 @@ form {
 }
 button {
 	cursor: pointer;
-	background-color: $purple;
 	color: white;
-	padding: 15px;
+	padding: 10px 0;
 	font-weight: bold;
 	border: none;
-	border-radius: 2px;
+	border-radius: 4px;
+	height: 43px;
 	margin-top: 10px;
-	transition: opacity .5s;
-}
-button:hover {
-	opacity: .8;
+	transition: background-color .5s, color .5s;
 }
 a {
 	text-decoration: none;

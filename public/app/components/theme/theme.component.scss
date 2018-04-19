@@ -1,0 +1,204 @@
+@import '~variables.scss';
+
+:host {
+	display: block;
+	div.block {
+		position: relative;
+		display: inline-block;
+		padding: 15px;
+		width: 100%;
+		margin-bottom: 5px;
+		color: white;
+		button {
+			margin-top: auto;
+		}
+	}
+	div.theme {
+		background-color: green;
+		width: 100%;
+		padding: 0;
+		background-size: cover;
+		background-position: center center;
+		div.theme-text {
+			display: flex;
+    		flex-direction: column;
+			width: 100%;
+			min-height: 200px;
+			height: 100%;
+			padding: 15px;
+			background-color: rgba(0, 0, 0, 0.7);
+			margin: 0;
+			button {
+				align-self: flex-end;
+				background-color: white;
+				color: $orange;
+				width: 100%;
+			}
+			button:hover {
+				background-color: $orange;
+				color: white;
+			}
+			p {
+				margin-bottom: 15px;
+			}
+		}
+	}
+	div.statement {
+		background-color: $purple;
+		button {
+			width: calc(50% - 7.5px);
+			background-color: white;
+			color: $purple;
+		}
+		button:hover {
+			color: white;
+			background-color: darken($purple, 10%);
+		}
+		button.button1 {
+			margin-right: 15px;
+		}
+		p {
+			margin-bottom: 15px;
+		}
+	}
+	div.explanation, div.exercise {
+		padding: 0;
+		div.video-wrapper {
+			position: relative;
+			padding-bottom: calc(56.2% + 100px);
+			height: 0;
+			vertical-align: top;
+			iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		div.explanation-text, div.exercise-text {
+			background-color: $light-orange;
+			padding: 15px;
+			a {
+				color: white;
+				font-weight: bold;
+			}
+		}
+	}
+	div.my-class {
+		margin-bottom: 0;
+		background-color: $light-gray;
+		padding: 0;
+		div.my-class-text {
+			background-color: $light-orange;
+			padding: 15px;
+		}
+		div.buttons {
+			padding: 15px;
+			button {
+				background-color: white;
+				color: $light-orange;
+				width: calc(50% - 7.5px);
+			}
+			button:hover {
+				background-color: $light-orange;
+				color: white;
+			}
+			button.button1 {
+				margin-right: 15px;
+			}
+		}
+	}
+	button {
+		box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.1);
+	}
+}
+
+@media screen and (min-width: 420px) { 
+	:host {
+		div.theme {
+			div.theme-text {
+				button {
+					width: calc(50% - 7.5px);
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1025px) {
+
+	:host {
+		margin: 0 15px 15px 15px;
+		div.block {
+			height: calc((100vh - 100px - 3 * 15px) / 2);
+			vertical-align: top;
+			overflow: hidden;
+			margin: initial;
+		}
+		div.theme {
+			margin-right: 15px;
+			margin-bottom: 15px;
+			width: calc((100% - 15px) * 3/4);
+			div.theme-text {
+				p {
+					padding-right: 50%;
+				}
+				button {
+					width: initial;
+					padding-left: 30px;
+					padding-right: 30px;
+					position: absolute;
+					bottom: 15px;
+				}
+			}
+		}
+		div.statement {
+			margin-bottom: 15px;
+			width: calc((100% - 15px) * 1/4);
+			button.button1 {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				margin: 0 0 15px 15px;
+				width: calc(50% - 22.5px);
+			}
+			button.button2 {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				margin: 0 15px 15px 0;
+				width: calc(50% - 22.5px);
+			}
+		}
+		div.explanation, div.exercise {
+			width: calc((100% - 2 * 15px) * 1/3);
+			margin-right: 15px;
+			padding: 0;
+			overflow-y: auto;
+			div.video-wrapper {
+				height: 0;
+				padding-bottom: calc((100vh - 100px - 3 * 15px) * 7/20);
+				iframe {
+					height: 100%;
+				}
+			}
+			div.explanation-text, div.exercise-text {
+				min-height: calc((100vh - 100px - 3 * 15px) * 3/20);
+			}
+		}
+		div.exercise {
+			margin-right: 15px;
+			width: calc((100% - 2 * 15px) * 1/3);
+		}
+		div.my-class {
+			width: calc((100% - 2 * 15px) * 1/3);
+			position: relative;
+			div.buttons {
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+			}
+		}
+	}
+}

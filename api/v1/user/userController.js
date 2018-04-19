@@ -3,28 +3,16 @@ var passport = require('passport');
 
 require('./userModel');
 require('../../middleware/passport');
-require('../mainController.js')();
 
 var User = mongoose.model('User');
 
-dbConnect();
-
-var sendJSONresponse = function(res, status, content) {
-    res.status(status);
-    res.json(content);
-};
-
-module.exports.register = function(req, res) {
+module.exports.store = function(req, res) {
 
     var response; // JSON to send as response
     var status; // HTTP status code to return
 
     // TODO: check individual fields and return specific error messages
-    if (
-        req.body.name == null || req.body.name == "" || 
-        req.body.email == null || req.body.email == "" ||
-        req.body.password == null || req.body.password == ""
-    ) {
+    if (!req.body.name || !req.body.email || !req.body.password) {
         status = 405;
         response = { "error": "We missen nog wat informatie! Weet je zeker dat je alles ingevuld hebt?" };
 
@@ -97,22 +85,5 @@ module.exports.login = function(req, res) {
             res.status(status);
             res.json(response);
         })(req, res);
-    }
-};
-
-module.exports.profileRead = function(req, res) {
-
-    // TODO: Additional error trapping
-
-    // If no user ID exists in the JWT return a 401
-    if (!req.payload._id) {
-        res.status(401).json({
-            "message" : "UnauthorizedError: private profile"
-        });
-    } else {
-        // Otherwise continue
-        User.findById(req.payload._id).exec(function(err, user) {
-            res.status(200).json(user);
-        });
     }
 };

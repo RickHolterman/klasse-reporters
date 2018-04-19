@@ -20,8 +20,17 @@
 	}
 }
 :host.nav-show {
-	top: 100px;
+	top: 70px;
 }
 :host.nav-hide {
-	top: -100px;
+	top: -70px;
+}
+
+@media screen and (min-width: 1025px) {
+	:host.nav-show {
+		top: 100px;
+	}
+	:host.nav-hide {
+		top: -100px;
+	}
 }
