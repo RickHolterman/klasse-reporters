@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators/map';
 import { Router } from '@angular/router';
 
 export interface UserDetails {
-	_id: string;
+	id: string;
 	email: string;
 	name: string;
 	exp: number;
@@ -26,6 +26,7 @@ export interface TokenPayload {
 export class AuthenticationService {
 
 	private token: string;
+	private profile;
 
 	constructor(private http: HttpClient, private router: Router) { }
 
@@ -102,7 +103,13 @@ export class AuthenticationService {
 		return this.request('post', 'login', user);
 	}
 
-	public profile(): Observable<any> {
-		return this.request('get', 'profile');
+	public getProfile(user) {
+		return this.http.get(`/api/v1/profile/${user}`, 
+			{ 
+				headers: new HttpHeaders({ 
+					Authorization: `Bearer ${this.getToken()}` 
+				})
+			}
+		);
 	}
 }
