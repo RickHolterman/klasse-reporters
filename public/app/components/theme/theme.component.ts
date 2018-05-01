@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { ActivatedRoute } from '@angular/router';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-theme',
@@ -14,7 +15,8 @@ export class ThemeComponent implements OnInit {
 
 	constructor(
 		public auth: AuthenticationService, 
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private sanitizer: DomSanitizer
 	) { }
 
 	ngOnInit() {
@@ -23,7 +25,10 @@ export class ThemeComponent implements OnInit {
 			this.auth.getGroup(params['group']).subscribe((group: any) => {
 		  		// Retrieve this group's current theme
 				this.auth.getTheme(group.current_theme).subscribe(response => {
-			  		this.theme = response 
+			  		this.theme = response;
+			  		// Bypass Angular's XSS protection by trusting the video urls
+			  		this.theme.explanation.video_url = this.sanitizer.bypassSecurityTrustResourceUrl(this.theme.explanation.video_url);
+			  		this.theme.exercise.video_url = this.sanitizer.bypassSecurityTrustResourceUrl(this.theme.exercise.video_url);
 				});
 		  	});	
 		});
