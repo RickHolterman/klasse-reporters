@@ -7,13 +7,14 @@ var auth = require('./middleware/auth');
 
 var userController = require('./v1/user/userController');
 var profileController = require('./v1/profile/profileController');
-var themeController = require('./v1/theme/themeController'); 
+var themeController = require('./v1/theme/themeController');
+var groupController = require('./v1/group/groupController');
 
 router.get('/', function(req, res) {
 	res.json({ message: 'Welcome to the Klasse Reporters API' });   
 }); 
 
-// User routes (for authentication)
+// User routes
 router.post('/register', userController.store);
 router.post('/login', userController.login);
 
@@ -26,7 +27,10 @@ router.get('/profile/:user', auth.optional, profileController.show);
 
 // Theme routes
 router.post('/theme', themeController.store);
-// router.get('/theme/:theme', themeController.show);
+router.get('/theme/:theme', themeController.show);
+
+// Class routes
+router.get('/group/:group', auth.required, groupController.show);
 
 // Catch all other routes and return appropriate error status codes
 router.get('*', function(req, res, next) {

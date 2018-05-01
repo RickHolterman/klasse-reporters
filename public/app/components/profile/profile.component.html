@@ -1,5 +1,7 @@
-<b>Naam</b><br />
-{{profile.name}}
-<br />
-<b>E-mail</b><br />
-{{profile.email}}
+<div *ngIf="profile"> <!-- TODO: use a route resolver instead -->
+	<b>Naam</b><br />
+	{{profile.name}}
+	<br />
+	<b>E-mail</b><br />
+	{{profile.email}}
+</div>

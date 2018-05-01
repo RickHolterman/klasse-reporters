@@ -6,12 +6,10 @@ import { AuthenticationService } from '../../services/authentication.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
+
 export class ProfileComponent implements OnInit {
 
-	profile: any = {
-		name: "",
-		email: ""
-	};
+	private profile: any;
 
 	currentUserId = this.auth.getUserDetails().id;
 

@@ -16,7 +16,7 @@ var UserSchema = new Schema({
 	},
 	hash: String,
 	salt: String,
-	classes: [{ // The classes a teacher owns
+	groups: [{ // The classes a teacher owns
 		title: String,
 		current_theme: { 
 			type: mongoose.Schema.Types.ObjectId, 

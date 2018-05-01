@@ -35,3 +35,18 @@ module.exports.store = function(req, res) {
         res.json(response);
     });
 };
+
+module.exports.show = function(req, res) {
+
+    Theme.findById(req.params.theme, function(err, theme) {
+        if (!theme) {
+            status = 400;
+            response = { "error": "Something went wrong" };
+        } else {
+            status = 200;
+            response = theme;
+        }
+        res.status(status);
+        res.json(response);
+    });
+}

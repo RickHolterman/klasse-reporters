@@ -104,12 +104,26 @@ export class AuthenticationService {
 	}
 
 	public getProfile(user) {
-		return this.http.get(`/api/v1/profile/${user}`, 
-			{ 
-				headers: new HttpHeaders({ 
-					Authorization: `Bearer ${this.getToken()}` 
-				})
-			}
-		);
+		return this.http.get(`/api/v1/profile/${user}`, { 
+			headers: new HttpHeaders({ 
+				Authorization: `Bearer ${this.getToken()}` 
+			})
+		});
+	}
+
+	public getTheme(theme) {
+		return this.http.get(`api/v1/theme/${theme}`, {
+			headers: new HttpHeaders({ 
+				Authorization: `Bearer ${this.getToken()}` 
+			})
+		});
+	}
+
+	public getGroup(group) {
+		return this.http.get(`/api/v1/group/${group}`, { 
+			headers: new HttpHeaders({ 
+				Authorization: `Bearer ${this.getToken()}` 
+			})
+		});
 	}
 }

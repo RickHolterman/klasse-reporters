@@ -23,7 +23,7 @@ export const AppRoutes: Routes = [
 		component: ProfileComponent
 	},
 	{
-		path: 'theme',
+		path: ':group/theme',
 		component: ThemeComponent
 	},
 	// Catch all other routes and redirect to home
