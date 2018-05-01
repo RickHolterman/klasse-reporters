@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService, TokenPayload } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,11 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-	credentials: TokenPayload = {
-		email: "",
-		password: "",
-		name: ""
-	};
+	credentials: any = new Object();
 
 	constructor(private auth: AuthenticationService, private router: Router) { }
 

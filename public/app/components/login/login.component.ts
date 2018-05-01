@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService, TokenPayload } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,10 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 	form: FormGroup;
-	credentials: TokenPayload = {
-		email: "",
-		password: ""
-	};
+	credentials: any = new Object();
 	emailErrorServer: boolean = false;
 	passwordErrorServer: boolean = false;
 	emailErrorServerMessage: string = null;

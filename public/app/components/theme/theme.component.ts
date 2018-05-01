@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
+import { GroupService } from '../../services/group.service';
+import { ThemeService } from '../../services/theme.service';
 import { ActivatedRoute } from '@angular/router';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 
@@ -14,7 +16,9 @@ export class ThemeComponent implements OnInit {
 	private theme: any;
 
 	constructor(
-		public auth: AuthenticationService, 
+		public authProvider: AuthenticationService, 
+		private groupProvider: GroupService,
+		private themeProvider: ThemeService,
 		private route: ActivatedRoute,
 		private sanitizer: DomSanitizer
 	) { }
@@ -22,9 +26,9 @@ export class ThemeComponent implements OnInit {
 	ngOnInit() {
 		this.route.params.subscribe(params => {
 			// Retrieve the group whose slug was supplied as router parameter
-			this.auth.getGroup(params['group']).subscribe((group: any) => {
+			this.groupProvider.getGroup(params['group']).subscribe((group: any) => {
 		  		// Retrieve this group's current theme
-				this.auth.getTheme(group.current_theme).subscribe(response => {
+				this.themeProvider.getTheme(group.current_theme).subscribe(response => {
 			  		this.theme = response;
 			  		// Bypass Angular's XSS protection by trusting the video urls
 			  		this.theme.explanation.video_url = this.sanitizer.bypassSecurityTrustResourceUrl(this.theme.explanation.video_url);

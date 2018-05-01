@@ -6,6 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutes } from './app.routes';
 
 import { AuthenticationService } from './services/authentication.service';
+import { GroupService } from './services/group.service';
+import { ThemeService } from './services/theme.service';
+import { ProfileService } from './services/profile.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -32,7 +35,12 @@ import { ThemeComponent } from './components/theme/theme.component';
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes)
   ],
-  providers: [AuthenticationService],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthenticationService,
+    GroupService,
+    ThemeService,
+    ProfileService
+  ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

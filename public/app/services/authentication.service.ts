@@ -4,51 +4,60 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { Router } from '@angular/router';
 
-export interface UserDetails {
-	id: string;
-	email: string;
-	name: string;
-	exp: number;
-	iat: number;
-}
-
 interface TokenResponse {
  	token: string;
-}
-
-export interface TokenPayload {
-	email: string;
-	password: string;
-	name?: string;
 }
 
 @Injectable()
 export class AuthenticationService {
 
 	private token: string;
-	private profile;
 
 	constructor(private http: HttpClient, private router: Router) { }
 
-	private getToken(): string {
+	private setToken(token: string): void {
+		localStorage.setItem("token", token);
+		this.token = token;
+	}
+
+	public getToken(): string {
 		if (!this.token) {
 			this.token = localStorage.getItem("token");
 		}
 		return this.token;
 	}
-	
-	private saveToken(token: string): void {
-		localStorage.setItem("token", token);
-		this.token = token;
-	}
-	
-	public logout(): void {
-		this.token = "";
-		window.localStorage.removeItem("token");
-		this.router.navigateByUrl("/");
+
+	public getHeaders() { 
+		return {
+			headers: new HttpHeaders({ 
+				Authorization: `Bearer ${this.getToken()}` 
+			})
+		}
 	}
 
-	public getUserDetails(): UserDetails {
+	public register(user): Observable<any> {
+		return this.http.post('/api/v1/register', user).pipe(
+	    	map((data: TokenResponse) => {
+		        if (data.token) {
+		          	this.setToken(data.token);
+		        }
+	        	return data;
+	      	})
+	    );
+	}	
+
+	public login(user): Observable<any> {
+		return this.http.post('/api/v1/login', user).pipe(
+	    	map((data: TokenResponse) => {
+		        if (data.token) {
+		          	this.setToken(data.token);
+				}
+	        	return data;
+	      	})
+	    );
+	}
+
+	public getUserDetails() {
 		const token = this.getToken();
 		let payload;
 		if (token) {
@@ -69,61 +78,9 @@ export class AuthenticationService {
 		}
 	}
 
-	private request(
-		method: "post"|"get", 
-		type: "login"|"register"|"profile", 
-		user?: TokenPayload
-	): Observable<any> {
-		let baseUrl;
-		if (method === "post") {
-			baseUrl = this.http.post(`/api/v1/${type}`, user);
-		} else {
-			baseUrl = this.http.get(`/api/v1/ ${type}`, { 
-				headers: new HttpHeaders({ 
-					Authorization: `Bearer ${this.getToken()}` 
-				})
-			});
-		}
-		const request = baseUrl.pipe(
-			map((data: TokenResponse) => {
-				if (data.token) {
-					this.saveToken(data.token);
-				}
-				return data;
-			})
-		);
-		return request;
-	}
-
-	public register(user: TokenPayload): Observable<any> {
-		return this.request('post', 'register', user);
-	}
-
-	public login(user: TokenPayload): Observable<any> {
-		return this.request('post', 'login', user);
-	}
-
-	public getProfile(user) {
-		return this.http.get(`/api/v1/profile/${user}`, { 
-			headers: new HttpHeaders({ 
-				Authorization: `Bearer ${this.getToken()}` 
-			})
-		});
-	}
-
-	public getTheme(theme) {
-		return this.http.get(`api/v1/theme/${theme}`, {
-			headers: new HttpHeaders({ 
-				Authorization: `Bearer ${this.getToken()}` 
-			})
-		});
-	}
-
-	public getGroup(group) {
-		return this.http.get(`/api/v1/group/${group}`, { 
-			headers: new HttpHeaders({ 
-				Authorization: `Bearer ${this.getToken()}` 
-			})
-		});
+	public logout(): void {
+		this.token = "";
+		window.localStorage.removeItem("token");
+		this.router.navigateByUrl("/");
 	}
 }
