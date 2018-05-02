@@ -1,4 +1,4 @@
-<div *ngIf="group">
+<ng-container *ngIf="group">
   	<h1>{{group.title}}</h1>
 
 	<h2>Leerlingen</h2>
@@ -15,4 +15,6 @@
 		</li>
 	</ul>
 
-</div>
+	<h2>Huidige Thema</h2>
+	<p>{{group.current_theme.header}}</p>
+</ng-container>

@@ -9,6 +9,7 @@ var userController = require('./v1/user/userController');
 var profileController = require('./v1/profile/profileController');
 var themeController = require('./v1/theme/themeController');
 var groupController = require('./v1/group/groupController');
+var licenceController = require('./v1/licence/licenceController');
 
 // Add middleware to preload user profile
 router.param('user', profileController.preloadUserProfile);
@@ -36,6 +37,9 @@ router.get('/groups', auth.required, groupController.index);
 
 // Get a group by its title
 router.get('/groups/:group', auth.required, groupController.show);
+
+// Get a licence by its id
+router.get('/licences/:licence', auth.required, licenceController.show);
 
 // Catch all other routes and return appropriate error status codes
 router.get('*', function(req, res, next) {

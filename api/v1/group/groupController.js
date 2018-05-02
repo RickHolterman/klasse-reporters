@@ -16,7 +16,7 @@ module.exports.store = function(req, res) {
         res.json(response);
     } else {
         // If it was, get logged in user by user id from jwt
-        User.findById(req.payload.id, function(err, user) {
+        User.findById(req.payload.id).exec(function(err, user) {
             if (user) {
                 // If group with same title already exists for this user, duplicate = true
                 user.groups.forEach(function(group) {
@@ -75,18 +75,19 @@ module.exports.index = function(req, res) {
 
 module.exports.show = function(req, res) {
 
-    var status = 400;
-    var response = { "error": "Er is iets fout gegaan" };
-
-    User.findById(req.payload.id).then(function(user) {
-        user.groups.forEach(function(group) {
-
-            if (group.title == req.params.group) {
-                status = 200;
-                response = group;
-            }
-        });
-        res.status(status);
-        res.json(response);
+    User.findById(req.payload.id)
+    .populate('groups.current_theme')
+    .exec(function(err, user) {
+        if(user) { 
+            user.groups.forEach(function(group) {
+                if (group.title == req.params.group) {
+                    res.status(200);
+                    res.json(group);
+                }
+            });            
+        } else if (err) {
+            res.status(400);
+            res.json({ "error": "Er is iets fout gegaan" });
+        }
     });
 }

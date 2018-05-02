@@ -25,13 +25,10 @@ export class ThemeComponent implements OnInit {
 		this.route.params.subscribe(params => {
 			// Retrieve the group whose slug was supplied as router parameter
 			this.groupProvider.getGroup(params['group']).subscribe((group: any) => {
-		  		// Retrieve this group's current theme
-				this.themeProvider.getTheme(group.current_theme).subscribe(response => {
-			  		this.theme = response;
-			  		// Bypass Angular's XSS protection by trusting the video urls
-			  		this.theme.explanation.video_url = this.sanitizer.bypassSecurityTrustResourceUrl(this.theme.explanation.video_url);
-			  		this.theme.exercise.video_url = this.sanitizer.bypassSecurityTrustResourceUrl(this.theme.exercise.video_url);
-				});
+		  		this.theme = group.current_theme;
+		  		// Bypass Angular's XSS protection by trusting the video urls
+		  		this.theme.explanation.video_url = this.sanitizer.bypassSecurityTrustResourceUrl(this.theme.explanation.video_url);
+		  		this.theme.exercise.video_url = this.sanitizer.bypassSecurityTrustResourceUrl(this.theme.exercise.video_url);
 		  	});	
 		});
 	}

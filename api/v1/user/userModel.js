@@ -6,9 +6,9 @@ var config = require('../../../config.js');
 
 var UserSchema = new Schema({
 	email: {
-	    type: String,
-	    unique: true,
-	    required: true
+		 type: String,
+		 unique: true,
+		 required: true
 	},
 	name: {
 		type: String,
@@ -20,7 +20,7 @@ var UserSchema = new Schema({
 		title: {
 			type: String
 		},
-		current_theme_id: { 
+		current_theme: { 
 			type: mongoose.Schema.Types.ObjectId, 
 			ref: 'Theme' 
 		},

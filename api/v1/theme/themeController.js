@@ -36,6 +36,7 @@ module.exports.store = function(req, res) {
     });
 };
 
+// TODO: Skip this route? --> theme can be retrieved through group's show method
 module.exports.show = function(req, res) {
 
     Theme.findById(req.params.theme, function(err, theme) {
