@@ -14,23 +14,22 @@ router.get('/', function(req, res) {
 	res.json({ message: 'Welcome to the Klasse Reporters API' });   
 }); 
 
-// User routes
 router.post('/register', userController.store);
+
 router.post('/login', userController.login);
 
-// Profile routes
-// Add middleware to all routes with user parameter
-// in order to preload user profile
 router.param('user', profileController.preloadUserProfile);
 
 router.get('/profile/:user', auth.optional, profileController.show);
 
-// Theme routes
 router.post('/theme', themeController.store);
+
 router.get('/theme/:theme', themeController.show);
 
-// Group routes
-router.post('/group', auth.required, groupController.store)
+router.post('/group', auth.required, groupController.store);
+
+router.get('/group', auth.required, groupController.index);
+
 router.get('/group/:group', auth.required, groupController.show);
 
 // Catch all other routes and return appropriate error status codes

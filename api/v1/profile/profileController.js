@@ -29,6 +29,7 @@ module.exports.show = function(req, res, next) {
     }
 }
 
+// Middleware to preload user profile; accessible through req.profile
 module.exports.preloadUserProfile = function(req, res, next, user) {
     User.findById(user)
     .then(function(user) {

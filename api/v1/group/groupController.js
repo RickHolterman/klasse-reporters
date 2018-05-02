@@ -16,7 +16,7 @@ module.exports.store = function(req, res) {
         res.json(response);
     } else {
         // If it was, get logged in user by user id from jwt
-        User.findById(req.payload.id).then(function(user) {
+        User.findById(req.payload.id, function(err, user) {
             if (user) {
                 // If group with same title already exists for this user, duplicate = true
                 user.groups.forEach(function(group) {
@@ -49,7 +49,7 @@ module.exports.store = function(req, res) {
                     res.status(status);
                     res.json(response);
                 }
-            } else {
+            } else if (err) {
                 status = 400;
                 response = { "error": "Er is iets fout gegaan" };
                 res.status(status);
@@ -57,6 +57,20 @@ module.exports.store = function(req, res) {
             }
         });
     }
+}
+
+module.exports.index = function(req, res) {
+
+    // Retrieve user by user id from jwt
+    User.findById("req.payload.id", function(err, user) {
+        if (user) {
+            res.status(200);
+            res.json(user.groups);
+        } else if (err) {
+            res.status(400);
+            res.json({ "error": "Er is iets fout gegaan" });
+        }
+    });
 }
 
 module.exports.show = function(req, res) {
