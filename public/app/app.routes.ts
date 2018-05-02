@@ -4,11 +4,21 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ThemeComponent } from './components/theme/theme.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { GroupComponent } from './components/group/group.component';
 
 export const AppRoutes: Routes = [
 	{
 		path: '',
-		component: ThemeComponent
+		component: GroupsComponent
+	},
+	{
+		path: 'groups',
+		component: GroupsComponent
+	},
+	{
+		path: 'groups/:group',
+		component: GroupComponent
 	},
 	{
 		path: 'register',

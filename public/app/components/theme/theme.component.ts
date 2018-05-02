@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service';
 import { GroupService } from '../../services/group.service';
 import { ThemeService } from '../../services/theme.service';
 import { ActivatedRoute } from '@angular/router';
@@ -16,7 +15,6 @@ export class ThemeComponent implements OnInit {
 	private theme: any;
 
 	constructor(
-		public authProvider: AuthenticationService, 
 		private groupProvider: GroupService,
 		private themeProvider: ThemeService,
 		private route: ActivatedRoute,

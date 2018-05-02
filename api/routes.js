@@ -10,26 +10,31 @@ var profileController = require('./v1/profile/profileController');
 var themeController = require('./v1/theme/themeController');
 var groupController = require('./v1/group/groupController');
 
-router.get('/', function(req, res) {
-	res.json({ message: 'Welcome to the Klasse Reporters API' });   
-}); 
+// Add middleware to preload user profile
+router.param('user', profileController.preloadUserProfile);
 
+// Store a new user
 router.post('/register', userController.store);
 
+// Log a user in
 router.post('/login', userController.login);
 
-router.param('users', profileController.preloadUserProfile);
-
+// Get a user by its _id
 router.get('/profiles/:user', auth.optional, profileController.show);
 
+// Store a new theme
 router.post('/themes', themeController.store);
 
+// Get a theme by its _id
 router.get('/themes/:theme', themeController.show);
 
+// Store a new group
 router.post('/groups', auth.required, groupController.store);
 
+// Get all groups for logged in user
 router.get('/groups', auth.required, groupController.index);
 
+// Get a group by its title
 router.get('/groups/:group', auth.required, groupController.show);
 
 // Catch all other routes and return appropriate error status codes

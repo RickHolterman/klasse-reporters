@@ -62,7 +62,7 @@ module.exports.store = function(req, res) {
 module.exports.index = function(req, res) {
 
     // Retrieve user by user id from jwt
-    User.findById("req.payload.id", function(err, user) {
+    User.findById(req.payload.id, function(err, user) {
         if (user) {
             res.status(200);
             res.json(user.groups);

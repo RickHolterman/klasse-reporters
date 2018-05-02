@@ -1,0 +1,18 @@
+<div *ngIf="group">
+  	<h1>{{group.title}}</h1>
+
+	<h2>Leerlingen</h2>
+  	<ul>
+	  	<li *ngFor="let student of activeStudents">
+			{{student.name}}
+		</li>
+	</ul>
+	
+	<h2>Verzoeken</h2>
+  	<ul>
+	  	<li *ngFor="let student of requests">
+			{{student.name}}
+		</li>
+	</ul>
+
+</div>
