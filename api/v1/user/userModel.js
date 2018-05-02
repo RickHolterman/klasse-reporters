@@ -17,16 +17,17 @@ var UserSchema = new Schema({
 	hash: String,
 	salt: String,
 	groups: [{ // The classes a teacher owns
-		title: String,
-		current_theme: { 
+		title: {
+			type: String
+		},
+		current_theme_id: { 
 			type: mongoose.Schema.Types.ObjectId, 
 			ref: 'Theme' 
 		},
 		students: [{
-			student: { 
-				type: mongoose.Schema.Types.ObjectId, 
-				ref: 'User'
-			},
+			name: String,
+			hash: String,
+			salt: String,
 			active: Boolean
 		}]
 	}]

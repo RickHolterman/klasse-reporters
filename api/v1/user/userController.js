@@ -23,6 +23,7 @@ module.exports.store = function(req, res) {
 
         user.name = req.body.name;
         user.email = req.body.email;
+        // user.groups.push(req.body.groups[0]);
 
         user.setPassword(req.body.password);
 
@@ -33,7 +34,7 @@ module.exports.store = function(req, res) {
                 if (err.code == 11000) {
                     response = { "error": "Er bestaat al een Klasse Reporter met het e-mailadres dat je hebt ingevuld!" };
                 } else {
-                    response = { "error": "Er is iets fout gegaan." };
+                    response = { "error": err };
                 }
                 status = 400;
             } else {

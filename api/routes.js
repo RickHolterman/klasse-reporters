@@ -29,7 +29,8 @@ router.get('/profile/:user', auth.optional, profileController.show);
 router.post('/theme', themeController.store);
 router.get('/theme/:theme', themeController.show);
 
-// Class routes
+// Group routes
+router.post('/group', auth.required, groupController.store)
 router.get('/group/:group', auth.required, groupController.show);
 
 // Catch all other routes and return appropriate error status codes
