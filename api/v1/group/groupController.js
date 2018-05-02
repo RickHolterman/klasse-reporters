@@ -7,6 +7,7 @@ module.exports.store = function(req, res) {
     var response;
     var duplicate;
 
+    // Check if title for group was supplied
     if (!req.body.title) {
         status = 405;
         response = { "error": "We missen nog wat informatie! Weet je zeker dat je alles ingevuld hebt?" };
@@ -14,10 +15,10 @@ module.exports.store = function(req, res) {
         res.status(status);
         res.json(response);
     } else {
+        // If it was, get logged in user by user id from jwt
         User.findById(req.payload.id).then(function(user) {
-
             if (user) {
-
+                // If group with same title already exists for this user, duplicate = true
                 user.groups.forEach(function(group) {
                     if (group.title == req.body.title) {
                         response = { "error": "Er bestaat al een klas met deze naam" };
@@ -25,15 +26,14 @@ module.exports.store = function(req, res) {
                         duplicate = true;
                     }
                 });
-
+                // If no group with supplied title exists already
                 if (!duplicate) {
-                
                     var group = {
                         title: req.body.title
                     }
-
+                    // Append the new group to our user's groups array
                     user.groups.push(group);
-
+                    // And save our changes
                     user.save(function(err) {
                         if (!err) {
                             status = 200;
@@ -45,10 +45,16 @@ module.exports.store = function(req, res) {
                         res.status(status);
                         res.json(response);
                     });
+                } else {
+                    res.status(status);
+                    res.json(response);
                 }
+            } else {
+                status = 400;
+                response = { "error": "Er is iets fout gegaan" };
+                res.status(status);
+                res.json(response);
             }
-            res.status(status);
-            res.json(response);
         });
     }
 }
