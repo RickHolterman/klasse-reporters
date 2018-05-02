@@ -12,6 +12,6 @@ export class GroupService {
 	) { }
 
 	public getGroup(group): Observable<any> {
-		return this.http.get(`/api/v1/group/${group}`, this.authProvider.getHeaders());
+		return this.http.get(`/api/v1/groups/${group}`, this.authProvider.getHeaders());
 	}
 }

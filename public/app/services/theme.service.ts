@@ -12,6 +12,6 @@ export class ThemeService {
 	) { }
 
 	public getTheme(theme): Observable<any> {
-		return this.http.get(`api/v1/theme/${theme}`, this.authProvider.getHeaders());
+		return this.http.get(`api/v1/themes/${theme}`, this.authProvider.getHeaders());
 	}
 }

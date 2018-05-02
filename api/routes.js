@@ -18,19 +18,19 @@ router.post('/register', userController.store);
 
 router.post('/login', userController.login);
 
-router.param('user', profileController.preloadUserProfile);
+router.param('users', profileController.preloadUserProfile);
 
-router.get('/profile/:user', auth.optional, profileController.show);
+router.get('/profiles/:user', auth.optional, profileController.show);
 
-router.post('/theme', themeController.store);
+router.post('/themes', themeController.store);
 
-router.get('/theme/:theme', themeController.show);
+router.get('/themes/:theme', themeController.show);
 
-router.post('/group', auth.required, groupController.store);
+router.post('/groups', auth.required, groupController.store);
 
-router.get('/group', auth.required, groupController.index);
+router.get('/groups', auth.required, groupController.index);
 
-router.get('/group/:group', auth.required, groupController.show);
+router.get('/groups/:group', auth.required, groupController.show);
 
 // Catch all other routes and return appropriate error status codes
 router.get('*', function(req, res, next) {

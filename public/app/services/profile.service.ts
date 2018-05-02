@@ -12,6 +12,6 @@ export class ProfileService {
 	) { }
 
 	public getProfile(user): Observable<any> {
-		return this.http.get(`/api/v1/profile/${user}`, this.authProvider.getHeaders());
+		return this.http.get(`/api/v1/profiles/${user}`, this.authProvider.getHeaders());
 	}
 }
