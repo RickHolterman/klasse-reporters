@@ -131,7 +131,7 @@
 	:host {
 		margin: 0 15px 15px 15px;
 		div.block {
-			height: calc((100vh - 100px - 3 * 15px) / 2);
+			height: calc((100vh - 100px - 2 * 15px) / 2);
 			vertical-align: top;
 			overflow: hidden;
 			margin: initial;
@@ -178,13 +178,13 @@
 			overflow-y: auto;
 			div.video-wrapper {
 				height: 0;
-				padding-bottom: calc((100vh - 100px - 3 * 15px) * 7/20);
+				padding-bottom: calc((100vh - 100px - 2 * 15px) * 7/20);
 				iframe {
 					height: 100%;
 				}
 			}
 			div.explanation-text, div.exercise-text {
-				min-height: calc((100vh - 100px - 3 * 15px) * 3/20);
+				min-height: calc((100vh - 100px - 2 * 15px) * 3/20);
 			}
 		}
 		div.exercise {

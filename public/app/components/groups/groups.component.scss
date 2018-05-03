@@ -1,0 +1,63 @@
+@import '~variables.scss';
+
+:host {
+	display: block;
+	padding: 15px 15px 0 15px;
+	transition: box-shadow .5s;
+	background-color: $purple;
+	h1, p {
+		color: white;
+	}
+	ul {
+		margin-top: 15px;
+		li.group {
+			background-color: transparent;
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			margin-bottom: 15px;
+			margin: 0 15px 15px 0;
+			transition: background-color .5s;
+			border-radius: 7px;
+			a {
+				display: block;
+				color: white;
+				text-decoration: none;
+				text-align: center;
+				padding: 10px 25px;
+				width: 100%;
+				border: 2px solid white;
+				border-radius: 7px;
+				font-weight: bold;
+				transition: color .5s, border-color .5s;
+			}
+		}
+		li.group:hover {
+			background-color: white;
+			a {
+				color: $purple;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 420px) {
+
+	:host {
+		ul {
+			li.group {
+				width: initial;
+				a {
+					width: initial;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1025px) {
+
+	:host {
+		padding-left: calc((100vw - 995px) / 2);
+	}
+}

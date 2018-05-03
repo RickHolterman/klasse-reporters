@@ -1,5 +1,9 @@
-<div *ngFor="let group of groups">
-	<a routerLink="/groups/{{group.title}}">
-		{{group.title}}
-	</a>
-</div>
+<h1>Mijn klassen</h1>
+<p>Klik op een klas om te beginnen.</p>
+<ul>
+	<li class="group" *ngFor="let group of groups">
+		<a routerLink="/groups/{{group.title}}">
+			{{group.title}}
+		</a>
+	</li>
+</ul>
