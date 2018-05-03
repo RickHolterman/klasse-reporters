@@ -1,0 +1,48 @@
+@import '~variables.scss';
+
+:host {
+	display: block;
+	padding: 15px;
+	background-color: $purple;
+	color: white;
+	animation: show .5s;
+	h2 {
+		margin-top: 15px;
+	}
+	ul {
+		list-style-type: none;
+	}
+	button {
+		background-color: transparent;
+		margin-top: 15px;
+		padding: 0;
+		height: initial;
+		color: white;
+		padding: 10px 25px;
+		border: 2px solid white;
+		border-radius: 7px;
+		font-weight: bold;
+		transition: color .5s, border-color .5s, background-color .5s;
+		
+	}
+	button:hover {
+		background-color: white;
+		color: $purple;
+	}
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+
+	:host {
+		padding-left: calc((100vw - 995px) / 2);
+	}
+}
