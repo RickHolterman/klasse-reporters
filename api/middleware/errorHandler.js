@@ -3,6 +3,7 @@ module.exports = function(err, req, res, next) {
 	if (req.app.get('env') !== 'development') {
 		delete err.stack;
 	}
+	console.log(err);
 	res.status(err.status || 500)
 	res.json(err);
 }

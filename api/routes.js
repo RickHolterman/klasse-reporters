@@ -38,6 +38,9 @@ router.get('/groups', auth.required, groupController.index);
 // Get a group by its title
 router.get('/groups/:group', auth.required, groupController.show);
 
+// Get the licence for the logged in user
+router.get('/licences', auth.required, licenceController.show);
+
 // Get a licence by its id
 router.get('/licences/:licence', auth.required, licenceController.show);
 

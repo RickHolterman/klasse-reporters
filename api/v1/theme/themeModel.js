@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var ThemeSchema = new Schema({
 	header: String,
 	content: String,
+	img_url: String,
 	statement: {
 		header: String,
 		arguments: {

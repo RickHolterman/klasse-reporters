@@ -9,6 +9,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { GroupService } from './services/group.service';
 import { ThemeService } from './services/theme.service';
 import { ProfileService } from './services/profile.service';
+import { LicenceService } from './services/licence.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -43,7 +44,8 @@ import { GroupComponent } from './components/group/group.component';
     AuthenticationService,
     GroupService,
     ThemeService,
-    ProfileService
+    ProfileService,
+    LicenceService
   ],
   bootstrap: [ AppComponent ]
 })

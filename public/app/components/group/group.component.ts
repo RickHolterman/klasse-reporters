@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
+import { LicenceService } from '../../services/licence.service';
 
 @Component({
 	selector: 'app-group',
@@ -12,9 +13,11 @@ export class GroupComponent implements OnInit {
 	private group;
 	private activeStudents;
 	private requests;
+	private licence;
 
  	constructor(
  		private groupProvider: GroupService,
+ 		private licenceProvider: LicenceService,
  		private route: ActivatedRoute
  	) { }
 
@@ -36,6 +39,9 @@ export class GroupComponent implements OnInit {
  				this.activeStudents = activeStudents;
  				this.requests = requests;
  			});
+ 		});
+ 		this.licenceProvider.getLicence().subscribe((licence: any) => {
+ 			this.licence = licence;
  		});
  	}
 }
