@@ -1,6 +1,5 @@
 <ng-container *ngIf="theme">
-	<!-- TODO: get background image from db -->
-	<div class="block theme" style="background-image: url('https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1440,w_2561,x_0,y_0/dpr_2.0/c_limit,w_740/fl_lossy,q_auto/v1491847042/articles/2017/02/18/how-the-right-co-opted-fake-news/170217-whitney-trump-fake-news-tease_kpakpl')">
+	<div class="block theme" [ngStyle]="{'background-image': 'url(' + theme.img_url + ')'}">
 		<div class="theme-text">
 			<header><h1>Thema: {{theme.header}}</h1></header>
 			<p>{{theme.content}}</p>
