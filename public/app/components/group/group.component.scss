@@ -10,19 +10,40 @@ $text-color: black;
 	animation: show .5s;
 	h1 {
 		color: $gray;
+		margin-bottom: 15px;
 	}
-	h2 {
+	div.invitation-code {
+		background-color: $purple;
+		margin-bottom: 15px;
+		display: inline-block;
+		padding: 10px 15px;
+		border-radius: 7px;
+		h2 {
+			color: white;
+			display: inline-block;
+		}
+		span {
+			background-color: white;
+			padding: 5px 10px;
+			color: black;
+			font-weight: bold;
+			display: inline-block;
+			border-radius: 5px;
+			margin-left: 10px;
+		}
+	}
+	h2.list {
 		border-radius: 7px 7px 0 0;
 		border: 1px solid $purple;
-		margin-top: 15px;
 		padding: 15px;
 		color: white;
 		background-color: $purple;
 	}
-	ul {
+	ul.list {
 		list-style-type: none;
 		border: 1px solid $light-gray;
 		border-radius: 0 0 7px 7px;
+		margin-bottom: 15px;
 		li {
 			padding: 15px 15px 10px 15px;
 		}
@@ -31,6 +52,60 @@ $text-color: black;
 		}
 		li:last-child {
 			border-radius: 0 0 7px 7px;
+		}
+	}
+	ul.theme {
+		list-style-type: none;
+		li {
+			display: inline-block;
+			width: calc((100% - 30px) / 3);
+			margin: 10px 0 10px 0;
+			height: 200px;
+			position: relative;
+			border-radius: 7px;
+			div.img {
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				background-size: cover;
+				background-position: center center;
+				border-radius: 7px;
+				background-color: rgba(0, 0, 0, 0.7);
+				opacity: 0.5;
+			}
+			div.selected {
+				background-color: rgba(0, 0, 0, 0.6);
+				padding-top: 15px;
+				padding-bottom: 15px;
+				position: absolute;
+				padding: 15px;
+				top: 0;
+				border-radius: 7px 0 7px 0;
+				text-align: center;
+				color: white;
+				font-weight: bold;
+			}
+			span {
+				background-color: lighten($purple, 20%);
+				display: block;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				border-radius: 0 0 7px 7px;
+				padding: 15px;
+				color: white;
+				font-weight: bold;
+			}
+			span.selected {
+				background-color: $purple;
+			}
+		}
+		li:nth-child(even) {
+			margin-left: 15px;
+			margin-right: 15px;
+		}
+		li.selected {
+			background-color: black;
 		}
 	}
 	button {

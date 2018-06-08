@@ -10,7 +10,7 @@ import { GroupComponent } from './components/group/group.component';
 export const AppRoutes: Routes = [
 	{
 		path: '',
-		component: GroupsComponent
+		component: LoginComponent
 	},
 	{
 		path: 'groups',

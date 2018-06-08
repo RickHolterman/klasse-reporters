@@ -1,22 +1,41 @@
-<ng-container *ngIf="group">
+<ng-container *ngIf="!!group && !!licence">
   	<h1>{{group.title}}</h1>
+  	<div class="invitation-code">
+  		<h2>Klascode:</h2>
+  		<span>{{group.invitation_code}}</span>
+  	</div>
 
-	<h2>Leerlingen</h2>
-  	<ul>
-	  	<li *ngFor="let student of activeStudents">
-			{{student.name}}
+	<h2 class="list">Leerlingen</h2>
+  	<ul class="list">
+  		<ng-container *ngIf="activeStudents.length > 0">
+		  	<li *ngFor="let student of activeStudents">
+				{{student.name}}
+			</li>
+		</ng-container>
+		<ng-container *ngIf="activeStudents.length <= 0">
+			<li>
+				Er zijn nog geen leerlingen toegevoegd aan deze klas.
+			</li>
+		</ng-container>
+	</ul>
+
+	<ng-container *ngIf="requests.length > 0">
+		<h2 class="list">Verzoeken</h2>
+	  	<ul class="list">
+		  	<li *ngFor="let student of requests">
+				{{student.name}}
+			</li>
+		</ul>
+	</ng-container>
+
+	<h2 class="theme">Huidig Thema</h2>
+	<ul class="theme">
+	  	<li *ngFor="let theme of licence.themes" [class.selected]="theme._id == group.current_theme._id">
+	  		<div class="img" [ngStyle]="{'background-image': 'url(' + theme.img_url + ')'}"></div>
+	  		<div class="selected" *ngIf="theme._id == group.current_theme._id">Geselecteerd</div>
+	  		<span [class.selected]="theme._id == group.current_theme._id">{{theme.header}}</span>
 		</li>
 	</ul>
-	
-	<h2>Verzoeken</h2>
-  	<ul>
-	  	<li *ngFor="let student of requests">
-			{{student.name}}
-		</li>
-	</ul>
-
-	<h2>Huidig Thema</h2>
-	<p>{{licence.themes[0].header}}</p>
 
 	<button routerLink="/groups">Terug</button>
 </ng-container>

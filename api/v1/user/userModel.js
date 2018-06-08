@@ -24,6 +24,7 @@ var UserSchema = new Schema({
 			type: mongoose.Schema.Types.ObjectId, 
 			ref: 'Theme' 
 		},
+		invitation_code: String,
 		students: [{
 			name: String,
 			hash: String,

@@ -13,6 +13,7 @@ module.exports.store = function(req, res) {
 
     theme.header = req.body.header;
     theme.content = req.body.content;
+    theme.img_url = req.body.img_url;
     theme.statement.header = req.body.statement.header;
     theme.statement.arguments.pro = req.body.statement.arguments.pro;
     theme.statement.arguments.con = req.body.statement.arguments.con;

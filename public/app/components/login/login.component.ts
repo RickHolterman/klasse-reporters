@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 			this.credentials.email = this.form.controls['email'].value;
 			this.credentials.password = this.form.controls['password'].value;
 			this.auth.login(this.credentials).subscribe(() => {
-				this.router.navigateByUrl('/profile');
+				this.router.navigateByUrl('/groups');
 			}, (err) => {
 
 				if (err.error.errorField == 'email') {
